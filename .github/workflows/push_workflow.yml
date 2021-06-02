@@ -8,7 +8,7 @@ on:
 
 jobs:
   app-tests:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
 
     services:
       mysql:
@@ -38,7 +38,7 @@ jobs:
         run: node_modules/.bin/jest
   build-js-production:
     name: Build JavaScript/CSS for PRODUCTION Server
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: app-tests
     if: github.ref == 'refs/heads/master'
     steps:
@@ -54,7 +54,7 @@ jobs:
           path: public
   build-js-staging:
     name: Build JavaScript/CSS for STAGING Server
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: app-tests
     if: github.ref == 'refs/heads/staging'
     steps:
@@ -70,7 +70,7 @@ jobs:
           path: public
   deploy-production:
     name: Deploy Project to PRODUCTION Server
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: [build-js-production, app-tests]
     if: github.ref == 'refs/heads/master'
     steps:
