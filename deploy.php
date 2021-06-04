@@ -64,9 +64,10 @@ task('deploy', [
     'deploy:vendors',
     'deploy:writable',
     'artisan:storage:link', // |
-    'artisan:config:clear', // | clear configurations 
+  //'artisan:config:clear', // | clear configurations
     'artisan:view:cache',   // |
     'artisan:config:cache', // | Laravel Specific steps
+    'artisan:config:clear',
     //'artisan:optimize',     // |
     'artisan:migrate',      // |
     'artisan:queue:restart',// |
